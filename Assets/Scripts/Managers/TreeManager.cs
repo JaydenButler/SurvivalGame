@@ -57,6 +57,7 @@ public class TreeManager : MonoBehaviour
             Item newItem = new Item
             {
                 ItemName = "Wood",
+                GameItem = GameManager.GameItems.Wood
             };
 
             var newInventoryItem = new InventoryItem(newItem);  

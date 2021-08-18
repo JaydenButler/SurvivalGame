@@ -35,14 +35,20 @@ namespace Managers
             InventoryItems.Add(item);
         }
 
-        public void AddItemOne()
+        public void AddItemOne(GameManager.GameItems item)
         {
-            inventoryUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = woodImage;
+            if (item == GameManager.GameItems.Wood)
+            {
+                inventoryUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = woodImage;
+            }
         }
         
-        public void RemoveItemOne()
+        public void RemoveItemOne(GameManager.GameItems item)
         {
-            inventoryUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = null;
+            if (item == GameManager.GameItems.Wood)
+            {
+                inventoryUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = null;
+            }
         }
 
             // Start is called before the first frame update
