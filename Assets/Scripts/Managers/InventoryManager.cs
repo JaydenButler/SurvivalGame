@@ -39,8 +39,8 @@ namespace Managers
         {
             if (item == GameManager.GameItems.Wood)
             {
-                inventoryUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = woodImage;
-                inventoryUI.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+                inventoryUI.transform.Find("InventoryBar").Find("Item0").GetComponent<Image>().sprite = woodImage;
+                inventoryUI.transform.Find("InventoryBar").Find("Item0").gameObject.SetActive(true);
             }
         }
         
@@ -48,8 +48,8 @@ namespace Managers
         {
             if (item == GameManager.GameItems.Wood)
             {
-                inventoryUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = null;
-                inventoryUI.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+                inventoryUI.transform.Find("InventoryBar").Find("Item0").GetComponent<Image>().sprite = null;
+                inventoryUI.transform.Find("InventoryBar").Find("Item0").gameObject.SetActive(false);
             }
         }
 
