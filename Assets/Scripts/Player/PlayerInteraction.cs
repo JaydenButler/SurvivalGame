@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Managers;
 using UnityEngine;
+using UnityEngine.UI;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -44,11 +45,8 @@ namespace Player
                             woodIndex = InventoryManager.Instance.InventoryItems.FindIndex(x => x.GetItem().ItemName == "Wood");
                             if (woodIndex != -1)
                             {
-                                TreeManager.Instance.woodAmount.text = $"Wood amount: {InventoryManager.Instance.InventoryItems[woodIndex].GetQuantity()}";
-                            }
-                            else
-                            {
-                                TreeManager.Instance.woodAmount.text = $"Wood amount: 0";
+                                InventoryManager.Instance.inventoryUI.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text =
+                                    $"{InventoryManager.Instance.InventoryItems[woodIndex].GetQuantity()}";
                             }
                         }
                     }

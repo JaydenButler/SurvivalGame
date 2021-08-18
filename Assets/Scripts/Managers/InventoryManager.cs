@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Structs;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Managers
 {
@@ -10,6 +11,8 @@ namespace Managers
         //Add 2d list or something here
 
         public List<InventoryItem> InventoryItems = new List<InventoryItem>();
+        [SerializeField] public GameObject inventoryUI;
+        [SerializeField] private Sprite woodImage;
 
         private static InventoryManager _instance;
 
@@ -30,6 +33,22 @@ namespace Managers
         public void AddItem(InventoryItem item)
         {
             InventoryItems.Add(item);
+        }
+
+        public void AddItemOne(GameManager.GameItems item)
+        {
+            if (item == GameManager.GameItems.Wood)
+            {
+                inventoryUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = woodImage;
+            }
+        }
+        
+        public void RemoveItemOne(GameManager.GameItems item)
+        {
+            if (item == GameManager.GameItems.Wood)
+            {
+                inventoryUI.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = null;
+            }
         }
 
             // Start is called before the first frame update

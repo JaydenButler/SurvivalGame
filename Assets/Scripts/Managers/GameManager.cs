@@ -8,6 +8,11 @@ namespace Managers
 
         public static GameManager Instance { get { return _instance; } }
 
+        public enum GameItems
+        {
+            Wood
+        }
+
         private void Awake()
         {
             if (_instance != null && _instance != this)

@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class TreeManager : MonoBehaviour
 {
     public List<GameTree> Trees = new List<GameTree>();
-    [SerializeField] public Text woodAmount;
 
     private static TreeManager _instance;
 
@@ -58,6 +57,7 @@ public class TreeManager : MonoBehaviour
             Item newItem = new Item
             {
                 ItemName = "Wood",
+                GameItem = GameManager.GameItems.Wood
             };
 
             var newInventoryItem = new InventoryItem(newItem);  
@@ -67,7 +67,10 @@ public class TreeManager : MonoBehaviour
             woodIndex = InventoryManager.Instance.InventoryItems.FindIndex(x => x.GetItem().ItemName == "Wood");
         }
 
-        woodAmount.text = $"Wood amount: {InventoryManager.Instance.InventoryItems[woodIndex].GetQuantity()}";
+        InventoryManager.Instance.inventoryUI.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text =
+            $"{InventoryManager.Instance.InventoryItems[woodIndex].GetQuantity()}";
+
+        // woodAmount.text = $"Wood amount: {InventoryManager.Instance.InventoryItems[woodIndex].GetQuantity()}";
     }
 
     // Start is called before the first frame update
