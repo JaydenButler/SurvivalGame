@@ -28,7 +28,7 @@ namespace Structs
             if (quantity < 1)
             {
                 InventoryManager.Instance.InventoryItems.Remove(this);
-                InventoryManager.Instance.RemoveItemOne(this.itemInfo.GameItem);
+                InventoryManager.Instance.RemoveItemOne(itemInfo.GameItem);
             }
         }
 
