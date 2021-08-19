@@ -46,7 +46,6 @@ public class TreeManager : MonoBehaviour
             Trees.Remove(Trees[index]);
         }
         
-        //TODO: this is hard coded for wood, need to fix that
         int woodIndex = InventoryManager.Instance.InventoryItems.FindIndex(x => x.GetItem().ItemName == "Wood");
         
         if (woodIndex != -1)

@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 namespace Managers
 {
+    
+    /* TODO:
+     * - Either create all the inventory slots with empty objects 
+     *      OR
+     * - Re order the inventory when something is removed to make slot empty slots disappeear
+     * 
+     */
     public class InventoryManager : MonoBehaviour
     {
         public List<InventoryItem> InventoryItems = new List<InventoryItem>();

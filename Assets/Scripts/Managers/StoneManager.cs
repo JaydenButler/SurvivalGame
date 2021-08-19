@@ -34,8 +34,6 @@ public class StoneManager : MonoBehaviour
         GameStone stone = new GameStone(10, newStone);
         Stones.Add(stone);
     }
-
-    //TODO: for some reason this makes wood go up
     public void PlayerHitStone(RaycastHit hit)
     {
         int index = Stones.IndexOf(Stones.FirstOrDefault(p => p.GetStoneObject() == hit.transform.gameObject));
