@@ -45,7 +45,8 @@ public class TreeManager : MonoBehaviour
             Destroy(hit.transform.gameObject);
             Trees.Remove(Trees[index]);
         }
-
+        
+        //TODO: this is hard coded for wood, need to fix that
         int woodIndex = InventoryManager.Instance.InventoryItems.FindIndex(x => x.GetItem().ItemName == "Wood");
         
         if (woodIndex != -1)
@@ -61,13 +62,13 @@ public class TreeManager : MonoBehaviour
             };
 
             var newInventoryItem = new InventoryItem(newItem);  
-            InventoryManager.Instance.AddItem(newInventoryItem);
+            InventoryManager.Instance.InventoryItems.Add(newInventoryItem);
             Debug.Log("Added wood to inventory");
             
             woodIndex = InventoryManager.Instance.InventoryItems.FindIndex(x => x.GetItem().ItemName == "Wood");
         }
 
-        InventoryManager.Instance.inventoryUI.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text =
+        InventoryManager.Instance.inventoryUI.transform.Find("InventoryBar").Find($"Item{woodIndex}").GetChild(0).gameObject.GetComponent<Text>().text =
             $"{InventoryManager.Instance.InventoryItems[woodIndex].GetQuantity()}";
 
         // woodAmount.text = $"Wood amount: {InventoryManager.Instance.InventoryItems[woodIndex].GetQuantity()}";

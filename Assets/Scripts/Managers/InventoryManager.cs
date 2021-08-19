@@ -8,11 +8,8 @@ namespace Managers
 {
     public class InventoryManager : MonoBehaviour
     {
-        //Add 2d list or something here
-
         public List<InventoryItem> InventoryItems = new List<InventoryItem>();
         [SerializeField] public GameObject inventoryUI;
-        [SerializeField] private Sprite woodImage;
 
         private static InventoryManager _instance;
 
@@ -30,27 +27,28 @@ namespace Managers
             }
         }
 
-        public void AddItem(InventoryItem item)
+        public void AddItemToUI(GameManager.GameItems item)
         {
-            InventoryItems.Add(item);
-        }
-
-        public void AddItemOne(GameManager.GameItems item)
-        {
+            var nextAvailableSlot = Instance.InventoryItems.Count;
             if (item == GameManager.GameItems.Wood)
             {
-                inventoryUI.transform.Find("InventoryBar").Find("Item0").GetComponent<Image>().sprite = woodImage;
-                inventoryUI.transform.Find("InventoryBar").Find("Item0").gameObject.SetActive(true);
+                inventoryUI.transform.Find("InventoryBar").Find($"Item{nextAvailableSlot}").GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Wood");
+                inventoryUI.transform.Find("InventoryBar").Find($"Item{nextAvailableSlot}").gameObject.SetActive(true);
+            }
+            else if (item == GameManager.GameItems.Stone)
+            {
+                inventoryUI.transform.Find("InventoryBar").Find($"Item{nextAvailableSlot}").GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Stone");
+                inventoryUI.transform.Find("InventoryBar").Find($"Item{nextAvailableSlot}").gameObject.SetActive(true);
             }
         }
         
-        public void RemoveItemOne(GameManager.GameItems item)
+        public void RemoveItemFromUI(GameManager.GameItems item)
         {
-            if (item == GameManager.GameItems.Wood)
-            {
-                inventoryUI.transform.Find("InventoryBar").Find("Item0").GetComponent<Image>().sprite = null;
-                inventoryUI.transform.Find("InventoryBar").Find("Item0").gameObject.SetActive(false);
-            }
+            Debug.Log($"Target item: {item}");
+            int index = Instance.InventoryItems.FindIndex(x => x.GetItem().GameItem ==  item);
+            Debug.Log(index);
+            inventoryUI.transform.Find("InventoryBar").Find($"Item{index}").GetComponent<Image>().sprite = null;
+            inventoryUI.transform.Find("InventoryBar").Find($"Item{index}").gameObject.SetActive(false);
         }
 
             // Start is called before the first frame update

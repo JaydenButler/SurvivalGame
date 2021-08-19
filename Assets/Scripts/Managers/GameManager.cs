@@ -10,7 +10,8 @@ namespace Managers
 
         public enum GameItems
         {
-            Wood
+            Wood,
+            Stone
         }
 
         private void Awake()

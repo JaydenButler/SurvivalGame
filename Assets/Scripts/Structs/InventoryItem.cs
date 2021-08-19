@@ -13,7 +13,7 @@ namespace Structs
         {
             itemInfo = item;
             quantity = 1;
-            InventoryManager.Instance.AddItemOne(item.GameItem);
+            InventoryManager.Instance.AddItemToUI(item.GameItem);
         }
 
         public void IncrementQuantity(int number)
@@ -27,8 +27,8 @@ namespace Structs
 
             if (quantity < 1)
             {
+                InventoryManager.Instance.RemoveItemFromUI(itemInfo.GameItem);
                 InventoryManager.Instance.InventoryItems.Remove(this);
-                InventoryManager.Instance.RemoveItemOne(itemInfo.GameItem);
             }
         }
 

@@ -34,6 +34,10 @@ namespace Player
                     {
                         TreeManager.Instance.PlayerHitTree(hit);
                     }
+                    else if (hit.collider.CompareTag("Stone"))
+                    {
+                        StoneManager.Instance.PlayerHitStone(hit);
+                    }
 
                     if (woodIndex != -1)
                     {
@@ -49,10 +53,6 @@ namespace Player
                                     $"{InventoryManager.Instance.InventoryItems[woodIndex].GetQuantity()}";
                             }
                         }
-                    }
-                    else
-                    {
-                        Debug.Log("This is not wood");
                     }
                 }
             }
